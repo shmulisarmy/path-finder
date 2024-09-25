@@ -1,6 +1,7 @@
 const seen = new Set()
 let next_round = []
 let to_look_at = []
+let round_number = 1
 // let mapElement = document.querySelector('#map');
 
 
@@ -35,13 +36,11 @@ function round(){
         console.table(neighbors)
         for (const [nx, ny] of neighbors) {
             if (map[nx][ny] == 0) {
-                map[nx][ny] = 2
+                map[nx][ny] = round_number
                 mapElement.children[nx].children[ny].classList.add('visited')
-                if ([nx, ny] == end) {
-                    map[nx][ny] = 3
-                    return
-                }
                 next_round.push([nx, ny])
+            } else if (map[nx][ny] == end_constant) {
+                mapElement.children[nx].children[ny].classList.add('end')
             }
         }
     }
@@ -55,6 +54,7 @@ function round(){
     const endCell_element = mapElement.children[end[0]].children[end[1]]
 
     if (to_look_at.length > 0 && !endCell_element.classList.contains('visited')) {
+        round_number++
         setTimeout(round, 100)
     }
 

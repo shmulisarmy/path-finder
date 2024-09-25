@@ -28,8 +28,8 @@
 
 
         const cellType = {
-            1: 'wall',
-            0: 'empty'
+            [wall_constant]: 'wall',
+            [empty_constant]: 'empty'
         }
 
         document.addEventListener('click', (event) => {
@@ -64,7 +64,7 @@
             if (currentMode !== 'place-or-remove-wall') return
             const row = target.parentNode.rowIndex
             const col = target.cellIndex
-            map[row][col] = map[row][col] === 1 ? 0 : 1
+            map[row][col] = map[row][col] === wall_constant ? empty_constant : wall_constant
             target.classList.toggle('wall')
         })
 
@@ -78,6 +78,7 @@
                  const cell = map[i][j]
 
                  td.textContent = " ";
+                 console.log({cell})
                  td.classList.add(cellType[cell]);
                  tr.appendChild(td);
              }
