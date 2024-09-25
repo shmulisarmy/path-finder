@@ -22,7 +22,8 @@ td{
     }
 }
 .wall{
-    animation: appear 0.5s;
+    animation: appear 0.5s ;
+    animation-delay: calc(0.5s * counter(wall_number));
     background-color: black;
 }
 nav{
@@ -66,4 +67,19 @@ nav{
 .visited{
     background-color: rgb(100, 206, 129);
     animation: visited_appear .5s;
+}
+
+
+table {
+    counter-reset: wall_number; /* Initialize the counter in the parent element */
+}
+
+td.wall {
+    counter-increment: wall_number; /* Increment the counter for each .wall element */
+    animation-delay: calc(0.1s * counter(wall_number)); /* Use the counter value directly in calc() */
+}
+
+td.wall:before {
+    color: aqua;
+    content: counter(wall_number); /* Display the counter value before each .wall element */
 }
