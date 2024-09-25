@@ -1,0 +1,69 @@
+body{
+    margin: 0;
+}
+table{
+    border-collapse: collapse;
+}
+td{
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    border: 1px solid black;
+}
+
+@keyframes appear {
+    from{
+        transform: scale(.5);
+        border-radius: 50%;
+    }
+    to{
+        border-radius: 0%;
+        transform: scale(1);
+    }
+}
+.wall{
+    animation: appear 0.5s;
+    background-color: black;
+}
+nav{
+    background-color: darkcyan;
+    color: white;
+    padding: 10px;
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#modes{
+    display: flex;
+}
+.active{
+    background-color: red;
+    animation: appear 0.5s;
+
+}
+.start{
+    background-color: green;
+    animation: appear 0.5s;
+
+}
+.end{
+    background-color: blue;
+    animation: appear 0.5s;
+}
+@keyframes visited_appear {
+    from{
+        background-color: aqua;
+        transform: scale(.5);
+        border-radius: 50%;
+    }
+    to{
+        border-radius: 0%;
+        transform: scale(1);
+        background-color: rgb(100, 206, 129);
+    }
+}
+.visited{
+    background-color: rgb(100, 206, 129);
+    animation: visited_appear .5s;
+}
